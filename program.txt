@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main () {
+   FILE *fp,*fp1;
+   char c[2000];
+
+   fp = fopen("test.txt","r");
+   fp1 = fopen("output.txt","w");
+
+   if(fp == NULL) {
+      perror("Error in opening file");
+      return(-1);
+   }
+
+
+
+   while(1) {
+
+      fgets(c, sizeof(c), fp);
+      puts(c);
+      fputs(c, fp1);
+      if( feof(fp) ) {
+         break ;
+      }
+
+
+
+   }
+   fclose(fp);
+
+   return(0);
+}
